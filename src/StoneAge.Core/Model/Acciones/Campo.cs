@@ -1,0 +1,24 @@
+﻿
+namespace StoneAge.Core.Model.Acciones
+{
+    public class Campo : IAccion
+    {
+        private int ocupados;
+
+        public Campo() { Reset(); }
+        public void Reset() => ocupados = 0;
+
+        public int Disponibles { get => Maximo - ocupados; }
+        public int Maximo => 1;
+        public int Requeridos => 1;
+        public bool RequiereDados => false;
+
+        public bool PuedeColocarPersona(Juego game, int numPersonas)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RealizacionAccion(Juego game) 
+            => game.ElTurno().Agricultura = game.ElTurno().Agricultura < 10 ? game.ElTurno().Agricultura + 1 : 10;
+    }
+}
